@@ -46,12 +46,13 @@ class FeedsProvider extends ChangeNotifier {
   }
 
   void increasePage() async {
-    if (_feeds.length == _allFeeds.length) {
-      isPageFull = true;
-      return;
-    }
     if (pageLoading) return;
     pageLoading = true;
+    if (_feeds.length == _allFeeds.length) {
+      isPageFull = true;
+      pageLoading = false;
+      return;
+    }
     notifyListeners();
     await Future.delayed(const Duration(seconds: 1));
     final index = _feeds.indexOf(_feeds.last);

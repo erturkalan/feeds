@@ -23,7 +23,7 @@ class _FeedsPageState extends State<FeedsPage> {
     });
     scrollController.addListener(() {
       if (scrollController.position.pixels >
-              scrollController.position.maxScrollExtent - 25 &&
+              scrollController.position.maxScrollExtent - 10 &&
           !isPageFull) {
         Provider.of<FeedsProvider>(context, listen: false).increasePage();
       }
